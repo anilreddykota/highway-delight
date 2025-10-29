@@ -1,0 +1,50 @@
+-- Active: 1756131459362@@46.105.61.215@3306
+CREATE TABLE experiences (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    about TEXT,
+    starting_price DECIMAL(10,2) NOT NULL,
+    max_count INTEGER NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    image_url TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE slots (
+    id SERIAL PRIMARY KEY,
+    experience_id INTEGER REFERENCES experiences(id) ON DELETE CASCADE,
+    date DATE NOT NULL,
+    time TIME NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    capacity INTEGER NOT NULL,
+    booked INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT valid_booking_count CHECK (booked <= capacity)
+);
+
+CREATE TABLE bookings (
+    id SERIAL PRIMARY KEY,
+    experience_id INTEGER REFERENCES experiences(id) ON DELETE RESTRICT,
+    slot_id INTEGER REFERENCES slots(id) ON DELETE RESTRICT,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(50),
+    promo_code VARCHAR(50),
+    total_price DECIMAL(10,2) NOT NULL,
+    status VARCHAR(20) DEFAULT 'confirmed',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE promo_codes (
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(50) UNIQUE NOT NULL,
+    discount_amount DECIMAL(10,2) NOT NULL,
+    valid_from TIMESTAMP WITH TIME ZONE NOT NULL,
+    valid_until TIMESTAMP WITH TIME ZONE,
+    max_uses INTEGER,
+    times_used INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);

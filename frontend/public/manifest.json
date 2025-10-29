@@ -1,0 +1,37 @@
+{
+  "name": "Highway Delite",
+  "short_name": "Highway Delite",
+  "description": "Discover authentic Indian experiences along your journey",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFC107",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["travel", "booking", "experiences"],
+  "shortcuts": [
+    {
+      "name": "Search Experiences",
+      "short_name": "Search",
+      "description": "Search for travel experiences",
+      "url": "/search",
+      "icons": [{ "src": "/icons/search-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}
