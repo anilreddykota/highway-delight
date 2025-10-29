@@ -36,7 +36,7 @@ export default function ExperienceDetailPage() {
   }, [id])
 
   const calculateTotal = () => {
-    if (!experience) return 0
+    if (!experience) return { subtotal: 0, tax: 0, total: 0 }
     const basePrice = experience.starting_price
     const subtotal = basePrice * quantity
     const tax = subtotal * 0.1 // 10% tax

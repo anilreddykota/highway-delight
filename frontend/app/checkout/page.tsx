@@ -62,7 +62,7 @@ export default function CheckoutPage() {
     }
   }
 
-  const price: number = selectedSlot ?  parseInt(experience?.starting_price) : 0
+  const price: number = selectedSlot && experience?.starting_price ? parseInt(experience.starting_price.toString()) : 0
   const finalPrice = Math.max(0, price - promoDiscount)
 
   async function submitBooking() {
@@ -87,8 +87,8 @@ export default function CheckoutPage() {
       const totalPrice = parseFloat((finalPrice + finalPrice * 0.05).toFixed(2))
 
       const payload = {
-        experience_id: parseInt(experience.id),
-        slot_id: parseInt(selectedSlot.id),
+        experience_id: parseInt(experience?.id?.toString() || '0'),
+        slot_id: parseInt(selectedSlot?.id?.toString() || '0'),
         name: name.trim(),
         email: email.trim(),
         phone: phone.trim() || undefined,
