@@ -1,4 +1,4 @@
-# BookIt: Experiences & Slots
+# (Highway Delite) BookIt: Experiences & Slots
 
 A fullstack web application for booking travel experiences and activities.
 
@@ -14,7 +14,7 @@ A fullstack web application for booking travel experiences and activities.
 
 - Node.js (v16 or higher)
 - PostgreSQL (v14 or higher)
-- npm or yarn
+- npm 
 
 ## Getting Started
 
@@ -36,12 +36,7 @@ A fullstack web application for booking travel experiences and activities.
    - Copy `.env.example` to `.env`
    - Update the database credentials in `.env`
 
-5. Run database migrations:
-   ```bash
-   npm run migrate
-   ```
-
-6. Start the development server:
+5. Start the development server:
    ```bash
    npm run dev
    ```
@@ -99,5 +94,5 @@ The frontend will be running on http://localhost:3000
 ## Deployment
 
 The application is deployed on:
-- Frontend: [URL to be added]
-- Backend: [URL to be added]
+- Frontend: [Open](https://highway-delite-azure.vercel.app/)
+- Backend: [Link](https://highway-delight-lemon.vercel.app/api/)
