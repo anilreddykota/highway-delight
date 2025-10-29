@@ -95,7 +95,7 @@ export default function ExperienceDetailPage() {
 
             {/* Date Selection */}
             <div className="mt-8">
-              <h2 className="text-xl font-semibold mb-4">ChooseDate</h2>
+              <h2 className="text-xl font-semibold mb-4">Choose Date</h2>
               <div className="flex gap-2 overflow-x-auto pb-2">
                 {dates.map((date) => (
                   <button
@@ -109,12 +109,15 @@ export default function ExperienceDetailPage() {
                     {date}
                   </button>
                 ))}
+                {dates.length === 0 && (
+                  <span className="text-gray-500">No available dates</span>
+                )}
               </div>
             </div>
 
             {/* Time Selection */}
             <div className="mt-8">
-              <h2 className="text-xl font-semibold mb-4">ChooseTime</h2>
+              <h2 className="text-xl font-semibold mb-4">Choose Time</h2>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {experience.slots
                 .filter((slot) => {
@@ -150,6 +153,9 @@ export default function ExperienceDetailPage() {
                 )
                 })
               }
+                {experience && experience?.slots.length === 0 && (
+                  <span className="text-gray-500">No available slots</span>
+                )}
               </div>
               <p className="text-sm text-gray-500 mt-2">All times are in IST (GMT+5:30)</p>
           
